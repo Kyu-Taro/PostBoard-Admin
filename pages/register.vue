@@ -14,8 +14,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
-
   export default {
     data() {
       return {
@@ -28,16 +26,17 @@
     },
     methods: {
       async register() {
-        await axios.post('http://127.0.0.1:8000/api/auth/register', this.form)
+        await this.$axios.post('http://127.0.0.1:8000/api/auth/register', this.form)
         .then((res) => {
           console.log(res);
+          this.$axios.setToken(res.data.token);
         })
         .catch(err => {
           console.log(err);
         })
       },
       async mypage() {
-        await axios.get('http://127.0.0.1:8000/api/mypage')
+        await this.$axios.get('http://127.0.0.1:8000/api/mypage')
         .then((res) => {
           console.log(res);
           if (!empty(res.data)) {
