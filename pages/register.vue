@@ -28,7 +28,7 @@
       async register() {
         await this.$axios.post('http://127.0.0.1:8000/api/auth/register', this.form)
         .then((res) => {
-          console.log(res);
+          console.log(res.data.token);
           this.$axios.setToken(res.data.token);
         })
         .catch(err => {
@@ -36,10 +36,10 @@
         })
       },
       async mypage() {
-        await this.$axios.get('http://127.0.0.1:8000/api/mypage')
+        await this.$axios.get('/api/mypage')
         .then((res) => {
           console.log(res);
-          if (!empty(res.data)) {
+          if (res.data.data) {
             this.$router.push('/mypage');
           } else {
             this.$router.push('/register');
