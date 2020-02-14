@@ -28,6 +28,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -47,7 +48,25 @@ export default {
     '/api': {
       target: 'http://127.0.0.1:8000',
       pathRewrite: {
-        '^/api' : '/'
+        '^/api' : '/api'
+      }
+    }
+  },
+
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: false,
+      home: '/',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
+          user: { url: '/api/me', method: 'get', propertyName: false },
+          logout: false
+        },
       }
     }
   },

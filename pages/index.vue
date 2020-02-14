@@ -3,7 +3,7 @@
     <div>
       <logo />
       <h1 class="title">
-        twitter-admin
+        {{ user.name }}
       </h1>
       <h2 class="subtitle">
         My impeccable Nuxt.js project
@@ -34,6 +34,11 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  computed: {
+    user() {
+      return this.$auth.user;
+    }
   }
 }
 </script>
