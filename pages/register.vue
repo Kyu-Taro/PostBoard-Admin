@@ -26,7 +26,7 @@
     },
     methods: {
       async register() {
-        await this.$axios.post('http://127.0.0.1:8000/api/auth/register', this.form)
+        await this.$axios.post('/api/auth/register', this.form)
         .then((res) => {
           console.log(res.data.token);
           this.$axios.setToken(res.data.token);
@@ -36,14 +36,13 @@
         })
       },
       async mypage() {
-        await this.$axios.get('/api/mypage')
+        await this.$axios.get('/api/me')
         .then((res) => {
           console.log(res);
-          if (res.data.data) {
-            this.$router.push('/mypage');
-          } else {
-            this.$router.push('/register');
-          }
+          this.$router.push('/mypage');
+        })
+        .catch((e) => {
+          this.$router.push('/login');
         })
       }
     }
