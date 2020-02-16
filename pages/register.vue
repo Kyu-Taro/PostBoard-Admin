@@ -28,21 +28,10 @@
       async register() {
         await this.$axios.post('/api/auth/register', this.form)
         .then((res) => {
-          console.log(res.data.token);
-          this.$axios.setToken(res.data.token);
+          this.$auth.loginWith('local', { data: this.form });
         })
         .catch(err => {
           console.log(err);
-        })
-      },
-      async mypage() {
-        await this.$axios.get('/api/me')
-        .then((res) => {
-          console.log(res);
-          this.$router.push('/mypage');
-        })
-        .catch((e) => {
-          this.$router.push('/login');
         })
       }
     }

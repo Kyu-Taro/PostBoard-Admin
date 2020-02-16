@@ -23,7 +23,7 @@
     },
     methods: {
       login() {
-        this.$auth.loginWith('local', { data: this.form });
+        this.$auth.loginWith('local', { data: this.loginForm });
       }
     }
   }

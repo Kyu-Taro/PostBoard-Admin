@@ -58,7 +58,7 @@ export default {
       login: '/login',
       logout: '/login',
       callback: false,
-      home: '/',
+      home: '/mypage',
     },
     strategies: {
       local: {
@@ -67,6 +67,12 @@ export default {
           user: { url: '/api/me', method: 'get', propertyName: false },
           logout: false
         },
+        start: {
+          endpoints: {
+            register: { url: '/api/auth/register', method: 'post', propertyName: 'token' },
+            user: { url: '/api/me', methods: 'get', propertyName: false }
+          }
+        }
       }
     }
   },
