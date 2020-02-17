@@ -1,5 +1,19 @@
 <template>
   <div>
+    <v-app-bar absolute color="teal lighten-3" dark hide-on-scroll prominent scroll-target="#scrolling-techniques-4">
+      <v-toolbar-title>BOYAKI</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon href="/mypage">
+        <v-icon>mdi-account</v-icon>
+      </v-btn>
+      <v-btn icon href="/board">
+        <v-icon>mdi-message-text</v-icon>
+      </v-btn>
+      <v-btn icon href="/logout">
+        <v-icon>mdi-logout</v-icon>
+      </v-btn>
+    </v-app-bar>
+
     <nuxt />
   </div>
 </template>

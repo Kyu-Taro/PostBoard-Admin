@@ -67,12 +67,6 @@ export default {
           login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
           user: { url: '/api/me', method: 'get', propertyName: false },
           logout: false
-        },
-        start: {
-          endpoints: {
-            register: { url: '/api/auth/register', method: 'post', propertyName: 'token' },
-            user: { url: '/api/me', methods: 'get', propertyName: false }
-          }
         }
       }
     }
