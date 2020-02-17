@@ -20,6 +20,11 @@
 
 <script>
   export default {
+    middleware({ store, redirect }) {
+      if (!store.$auth.loggedIn) {
+        redirect('/login');
+      }
+    },
     computed: {
       user() {
         return this.$auth.user.user;

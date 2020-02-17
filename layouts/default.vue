@@ -9,14 +9,24 @@
       <v-btn icon href="/board">
         <v-icon>mdi-message-text</v-icon>
       </v-btn>
-      <v-btn icon href="/logout">
-        <v-icon>mdi-logout</v-icon>
+      <v-btn icon>
+        <v-icon @click="logout">mdi-logout</v-icon>
       </v-btn>
     </v-app-bar>
 
     <nuxt />
   </div>
 </template>
+
+<script>
+  export default {
+    methods: {
+      logout() {
+        this.$auth.logout();
+      }
+    }
+  }
+</script>
 
 <style>
 html {
