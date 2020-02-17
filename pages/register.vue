@@ -11,6 +11,11 @@
 
 <script>
   export default {
+    middleware({ store, redirect }) {
+      if (store.$auth.loggedIn) {
+        redirect('/mypage');
+      }
+    },
     data() {
       return {
         form: {

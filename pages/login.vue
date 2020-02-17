@@ -8,9 +8,9 @@
 
 <script>
   export default {
-    middleware({ store, redirect }){
-      if(store.$auth.logedIn){
-        redirect('/');
+    middleware({ store, redirect }) {
+      if (store.$auth.loggedIn) {
+        redirect('/mypage');
       }
     },
     data(){
