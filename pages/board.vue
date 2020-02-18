@@ -1,5 +1,13 @@
 <template>
   <div class="top-container">
+    <v-textarea v-model="text" color="teal">
+      <template v-slot:label>
+        <div>
+          ぼやく
+        </div>
+      </template>
+    </v-textarea>
+    <v-btn small>投稿</v-btn>
     <div v-for="data in datas" :key="data.id">
       <v-card class="mx-auto" dark max-width="400">
         <v-card-title>
@@ -38,7 +46,8 @@
     },
     data() {
       return {
-        datas: null
+        datas: null,
+        text: ''
       }
     },
     created() {
