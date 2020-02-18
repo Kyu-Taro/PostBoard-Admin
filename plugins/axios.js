@@ -2,7 +2,7 @@ export let axios;
 
 export default ({ store, $axios }) => {
   $axios.onRequest(config => {
-    config.headers.common['Authorization'] = 'Bearer' + store.$auth.getToken('local');
+    config.headers.common['Authorization'] = store.$auth.getToken('local');
     config.headers.common['Accept'] = 'application/json';
   });
 
