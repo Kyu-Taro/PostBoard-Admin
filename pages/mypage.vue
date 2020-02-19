@@ -36,8 +36,15 @@
             </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-title>{{ data.id }}</v-list-item-title>
+              <v-list-item-title>{{ data.user.name }}</v-list-item-title>
             </v-list-item-content>
+
+            <v-row align="center" justify="end">
+              <v-icon class="mr-1">mdi-grease-pencil</v-icon>
+              <span class="mr-1">·</span>
+              <v-icon class="mr-1" @click="del(data.id)">mdi-delete</v-icon>
+            </v-row>
+
           </v-list-item>
         </v-card-actions>
       </v-card>
@@ -66,9 +73,14 @@
     created() {
       this.$axios.get('/api/board/' + this.user.id)
       .then((res) => {
-        console.log(res);
         this.datas = res.data.data;
       })
+    },
+    methods: {
+      async del(val) {
+        await this.$axios.delete('/api/board/' + val);
+        this.$router.go({ path: this.$router.currentRoute.path, force: true });
+      }
     }
   }
 </script>
@@ -87,5 +99,8 @@
   .v-card {
     margin: 50px auto;
     background: black;
+  }
+  .v-icon {
+    cursor: pointer;
   }
 </style>
