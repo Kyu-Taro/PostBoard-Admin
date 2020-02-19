@@ -25,10 +25,22 @@
         redirect('/login');
       }
     },
+    data() {
+      return {
+        datas: null
+      }
+    },
     computed: {
       user() {
         return this.$auth.user.user;
       }
+    },
+    created() {
+      this.$axios.get('/api/board/' + this.user.id)
+      .then((res) => {
+        console.log(res);
+        this.datas = res.data.data;
+      })
     }
   }
 </script>

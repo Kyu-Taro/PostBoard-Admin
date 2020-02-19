@@ -7,7 +7,7 @@
         </div>
       </template>
     </v-textarea>
-    <v-btn small>投稿</v-btn>
+    <v-btn small @click="postText">投稿</v-btn>
     <div v-for="data in datas" :key="data.id">
       <v-card class="mx-auto" dark max-width="400">
         <v-card-title>
@@ -53,9 +53,14 @@
     created() {
       this.$axios.get('/api/board')
       .then((res) => {
-        console.log(res);
         this.datas = res.data.data;
       })
+    },
+    methods: {
+      async postText() {
+        await this.$axios.post('/api/board',{ id: this.$auth.user.user.id, text: this.text });
+        this.$router.go({ path: this.$router.currentRoute.path, force: true });
+      }
     }
   }
 </script>
