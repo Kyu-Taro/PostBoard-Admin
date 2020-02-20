@@ -40,7 +40,7 @@
             </v-list-item-content>
 
             <v-row align="center" justify="end">
-              <v-icon class="mr-1">mdi-grease-pencil</v-icon>
+              <v-icon class="mr-1" @click="update(data.id)">mdi-grease-pencil</v-icon>
               <span class="mr-1">·</span>
               <v-icon class="mr-1" @click="del(data.id)">mdi-delete</v-icon>
             </v-row>
@@ -80,6 +80,10 @@
       async del(val) {
         await this.$axios.delete('/api/board/' + val);
         this.$router.go({ path: this.$router.currentRoute.path, force: true });
+      },
+      async update(val) {
+        await this.$store.dispatch('board/setId', val);
+        this.$router.push('/postUpdate');
       }
     }
   }
