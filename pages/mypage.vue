@@ -11,8 +11,8 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn class="orange" text href="/edit">edit</v-btn>
-        <v-btn class="orange" text href="/delete">delete</v-btn>
+        <v-btn class="orange" text @click="edit(user.id)">edit</v-btn>
+        <v-btn class="orange" text @click="del">delete</v-btn>
       </v-card-actions>
     </v-card>
 
@@ -84,6 +84,14 @@
       async update(val) {
         await this.$store.dispatch('board/setId', val);
         this.$router.push('/postUpdate');
+      },
+      async del() {
+        await this.$axios.get('/api/del/' + this.user.id);
+        this.$router.push('/');
+      },
+      async edit(val) {
+        await this.$store.dispatch('user/setId', val);
+        this.$router.push('/editMypage');
       }
     }
   }

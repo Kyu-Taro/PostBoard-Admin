@@ -32,7 +32,7 @@
     methods: {
       login() {
         this.$auth.loginWith('local', { data: this.loginForm });
-      }
+      },
     }
   }
 </script>

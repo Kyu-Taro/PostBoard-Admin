@@ -20,10 +20,8 @@
     },
     created() {
       const id = this.$store.getters['board/id'];
-      console.log(id);
       this.$axios.get('/api/postData/' + id)
       .then((res) => {
-        console.log(res);
         this.text = res.data.data.text;
       })
     },

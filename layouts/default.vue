@@ -21,8 +21,13 @@
 <script>
   export default {
     methods: {
-      logout() {
-        this.$auth.logout();
+      async logout() {
+        if (this.$auth.loggedIn) {
+          await this.$axios.get('/api/logout');
+          this.$auth.logout();
+        } else {
+          this.$router.push('/login');
+        }
       }
     }
   }
